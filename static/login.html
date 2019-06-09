@@ -91,7 +91,7 @@
                 <div class="form-group">
                   <label for="vCode" class="col-sm-2 control-label">验证码</label>
                   <div class="col-sm-6">
-                    <input type="text" name="vcode" class="form-control" id="vcode" placeholder="请输入验证码" />
+                    <input type="text" name="vCode" class="form-control" id="vCode" placeholder="请输入验证码" />
                   </div>
                   <div class="col-sm-4">
                     <!-- 设置验证码的路由地址即可 -->
@@ -137,12 +137,20 @@
         success(xhrData) {
           if (xhrData.code == 200) {
             alert(xhrData.msg)
+            location.href= './index.html'
           } else if (xhrData.code == 400) {
             alert(xhrData.msg)
+            $('.vCode').click()
           }
         }
       })
     })
+
+    $('.vCode').click(function(){
+        $(this).attr('src','/captcha?'+Math.random())
+        // $(this).attr('src','/captcha?'+Date.now())
+    })
+
   })
 
 </script>
